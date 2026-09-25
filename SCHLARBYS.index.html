@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schlarby's - Definitely Fictional</title>
+    <style>
+        /* Global Reset & Typography */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f7f3eb;
+            color: #3e2723;
+            padding-top: 140px; 
+        }
+
+        /* Legal Disclaimer Banner */
+        .disclaimer-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #3e2723;
+            color: #fff;
+            padding: 15px 25px;
+            font-size: 11px;
+            line-height: 1.4;
+            text-align: justify;
+            border-bottom: 4px solid #d84315;
+            z-index: 9999;
+        }
+        .disclaimer-banner strong {
+            color: #ffb74d;
+            letter-spacing: 1px;
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* Header Style */
+        h1 {
+            font-size: 3.5rem;
+            color: #d84315;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px #ffb74d;
+        }
+        .tagline {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #5d4037;
+        }
+
+        /* Joke Menu Layout */
+        .menu-section {
+            background-color: #fff;
+            border: 3px dashed #d84315;
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #3e2723;
+            text-transform: uppercase;
+        }
+        .menu-item {
+            margin: 20px 0;
+            padding-bottom: 15px;
+            border-bottom: 1px dotted #ccc;
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        .item-name {
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: #d84315;
+        }
+        .item-desc {
+            font-size: 0.95rem;
+            margin-top: 5px;
+            color: #795548;
+        }
+
+        /* Interactive Button & Modal Styling */
+        .order-btn {
+            background-color: #d84315;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 30px;
+            border-radius: 4px;
+            box-shadow: 0 4px #bf360c;
+        }
+        .order-btn:hover {
+            background-color: #e64a19;
+        }
+        .order-btn:active {
+            box-shadow: 0 0 #bf360c;
+            transform: translateY(4px);
+        }
+
+        /* Modal Popup background */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+        /* Modal Window Box */
+        .modal-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            text-align: center;
+            border: 4px solid #3e2723;
+        }
+        .modal-box h3 {
+            color: #d84315;
+            margin-bottom: 15px;
+        }
+        .close-btn {
+            margin-top: 20px;
+            background: #3e2723;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Prominent Top Disclaimer Banner -->
+    <div class="disclaimer-banner">
+        <strong>LEGAL DISCLAIMER & NOTICE OF PARODY:</strong> This website is a 100% fictional, non-commercial parody and artistic expression. It is not affiliated with, authorized, endorsed, sponsored, or in any way officially connected with Arby's IP Holder, LLC, Inspire Brands, or any of their subsidiaries or affiliates. All trademarks, service marks, trade names, and logos referenced on this site belong to their respective owners and are used here strictly under the Nominative Fair Use and Parody doctrines of U.S. Copyright and Trademark Law. No goods, services, or schmeats are offered for sale on this website.
+    </div>
+
+    <!-- Main Website Content -->
+    <div class="container">
+        <h1>SCHLARBY'S</h1>
+        <p class="tagline">"We Haveth the Schmeats"</p>
+
+        <div class="menu-section">
+            <h2>The Fictional Menu</h2>
+            
+            <div class="menu-item">
+                <p class="item-name">The Classic Schmeats Sandwich</p>
+                <p class="item-desc">A mountain of thinly-sliced, completely imaginary protein on a digital bun.</p>
+            </div>
+
+            <div class="menu-item">
+                <p class="item-name">Spiral-Cut Logic Fries</p>
+                <p class="item-desc">Seasoned perfectly with free speech and legal protections.</p>
+            </div>
+
+            <div class="menu-item">
+                <p class="item-name">The Cease-and-Desist Shake</p>
+                <p class="item-desc">Extremely cold, thick, and served directly from a corporate legal office.</p>
+            </div>
+        </div>
+
+        <!-- Interactive Trigger Button -->
+        <button class="order-btn" onclick="openModal()">PLACE FICTIONAL ORDER</button>
+    </div>
+
+    <!-- The Joke Modal Popup Box -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal-box">
+            <h3>ERROR: 404 Schmeats Not Found</h3>
+            <p>We cannot process your order because this establishment does not exist, physics prevents the transmission of digital meat, and our lawyers are already sweating.</p>
+            <button class="close-btn" onclick="closeModal()">Go Back</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('orderModal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
