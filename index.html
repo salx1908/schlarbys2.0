@@ -15,7 +15,7 @@
             font-family: 'Courier New', Courier, monospace;
             background-color: #f7f3eb;
             color: #3e2723;
-            padding-top: 140px; 
+            padding-top: 150px; 
         }
 
         /* Legal Disclaimer Banner */
@@ -36,6 +36,28 @@
         .disclaimer-banner strong {
             color: #ffb74d;
             letter-spacing: 1px;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: #d84315;
+            padding: 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+        .navbar a:hover {
+            color: #ffb74d;
         }
 
         /* Main Content Container */
@@ -60,19 +82,23 @@
             color: #5d4037;
         }
 
-        /* Joke Menu Layout */
-        .menu-section {
+        /* Content Sections */
+        .section-box {
             background-color: #fff;
             border: 3px dashed #d84315;
             border-radius: 8px;
             padding: 30px;
-            margin-top: 20px;
+            margin-top: 30px;
+            text-align: left;
         }
         h2 {
             font-size: 2rem;
             margin-bottom: 20px;
             color: #3e2723;
             text-transform: uppercase;
+            text-align: center;
+            border-bottom: 2px solid #ffb74d;
+            padding-bottom: 10px;
         }
         .menu-item {
             margin: 20px 0;
@@ -93,29 +119,66 @@
             color: #795548;
         }
 
-        /* Interactive Button & Modal Styling */
-        .order-btn {
+        /* Location Finder Styles */
+        .location-search {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .search-btn {
+            background-color: #3e2723;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-family: 'Courier New', Courier, monospace;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .location-output {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #bf360c;
+            min-height: 40px;
+        }
+
+        /* Interactive Tracker */
+        .tracker-container {
+            text-align: center;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #eee;
+            border-radius: 4px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        .progress-fill {
+            width: 0%;
+            height: 20px;
+            background-color: #d84315;
+            transition: width 0.5s ease-in-out;
+        }
+
+        /* Global Interactive Button Styling */
+        .action-btn {
             background-color: #d84315;
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 12px 25px;
             font-family: 'Courier New', Courier, monospace;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 30px;
             border-radius: 4px;
             box-shadow: 0 4px #bf360c;
+            display: inline-block;
+            margin: 15px auto;
         }
-        .order-btn:hover {
-            background-color: #e64a19;
-        }
-        .order-btn:active {
+        .action-btn:active {
             box-shadow: 0 0 #bf360c;
             transform: translateY(4px);
         }
 
-        /* Modal Popup background */
+        /* Modal Popup Styling */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -128,7 +191,6 @@
             justify-content: center;
             align-items: center;
         }
-        /* Modal Window Box */
         .modal-box {
             background: #fff;
             padding: 30px;
@@ -136,10 +198,6 @@
             max-width: 500px;
             text-align: center;
             border: 4px solid #3e2723;
-        }
-        .modal-box h3 {
-            color: #d84315;
-            margin-bottom: 15px;
         }
         .close-btn {
             margin-top: 20px;
@@ -158,13 +216,21 @@
         <strong>LEGAL DISCLAIMER & NOTICE OF PARODY:</strong> This website is a 100% fictional, non-commercial parody and artistic expression. It is not affiliated with, authorized, endorsed, sponsored, or in any way officially connected with Arby's IP Holder, LLC, Inspire Brands, or any of their subsidiaries or affiliates. All trademarks, service marks, trade names, and logos referenced on this site belong to their respective owners and are used here strictly under the Nominative Fair Use and Parody doctrines of U.S. Copyright and Trademark Law. No goods, services, or schmeats are offered for sale on this website.
     </div>
 
+    <!-- Sticky Navbar Buttons -->
+    <div class="navbar">
+        <a href="#menu">THE MENU</a>
+        <a href="#locations">FIND LOCATIONS</a>
+        <a href="#tracker">SCHMEAT TRACKER</a>
+    </div>
+
     <!-- Main Website Content -->
     <div class="container">
         <h1>SCHLARBY'S</h1>
         <p class="tagline">"We Haveth the Schmeats"</p>
 
-        <div class="menu-section">
-            <h2>The Fictional Menu</h2>
+        <!-- Menu Section -->
+        <div class="section-box" id="menu">
+            <h2>The Expanded Menu</h2>
             
             <div class="menu-item">
                 <p class="item-name">The Classic Schmeats Sandwich</p>
@@ -177,31 +243,107 @@
             </div>
 
             <div class="menu-item">
+                <p class="item-name">The Subpoena Sliders</p>
+                <p class="item-desc">Tiny, bite-sized warnings packed with dense legalese and served on a bed of anxiety.</p>
+            </div>
+
+            <div class="menu-item">
                 <p class="item-name">The Cease-and-Desist Shake</p>
                 <p class="item-desc">Extremely cold, thick, and served directly from a corporate legal office.</p>
             </div>
+            
+            <div style="text-align: center;">
+                <button class="action-btn" onclick="triggerAlert('Order Error', 'Cannot process items. Our kitchen relies entirely on theoretical legal loopholes, not grills.')">ORDER NOW</button>
+            </div>
         </div>
 
-        <!-- Interactive Trigger Button -->
-        <button class="order-btn" onclick="openModal()">PLACE FICTIONAL ORDER</button>
+        <!-- Fictional Location Finder Section -->
+        <div class="section-box" id="locations">
+            <h2>Find Nearby Schlarby's</h2>
+            <p style="text-align: center; margin-bottom: 15px;">Enter your zip code to discover our highly secure, elusive properties.</p>
+            <div class="location-search">
+                <input type="text" id="zipInput" placeholder="e.g. 90210" style="padding: 10px; font-family: monospace; width: 60%; max-width: 200px;">
+                <button class="search-btn" onclick="findFictionalLocation()">SEARCH</button>
+                <div class="location-output" id="locationResult"></div>
+            </div>
+        </div>
+
+        <!-- Interactive Schmeat Status Tracker Section -->
+        <div class="section-box" id="tracker">
+            <h2>Satellite Schmeat Tracker</h2>
+            <div class="tracker-container">
+                <p>Click below to ping our legal defense grid and check current delivery status.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="trackBar"></div>
+                </div>
+                <button class="action-btn" onclick="startTracking()">PING RADAR</button>
+                <p id="trackerStatus" style="font-style: italic; color: #795548;"></p>
+            </div>
+        </div>
+
     </div>
 
-    <!-- The Joke Modal Popup Box -->
-    <div class="modal-overlay" id="orderModal">
+    <!-- Dynamic Modal Popup Container -->
+    <div class="modal-overlay" id="customModal">
         <div class="modal-box">
-            <h3>ERROR: 404 Schmeats Not Found</h3>
-            <p>We cannot process your order because this establishment does not exist, physics prevents the transmission of digital meat, and our lawyers are already sweating.</p>
-            <button class="close-btn" onclick="closeModal()">Go Back</button>
+            <h3 id="modalTitle" style="color: #d84315; margin-bottom: 15px;"></h3>
+            <p id="modalBody"></p>
+            <button class="close-btn" onclick="closeModal()">Dismiss</button>
         </div>
     </div>
 
+    <!-- JavaScript Interactive Engine -->
     <script>
-        function openModal() {
-            document.getElementById('orderModal').style.display = 'flex';
+        // Custom Popup Alert Controller
+        function triggerAlert(title, message) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalBody').innerText = message;
+                    function closeModal() {
+            document.getElementById('customModal').style.display = 'none';
         }
-        function closeModal() {
-            document.getElementById('orderModal').style.display = 'none';
+
+        // Fictional Locations Database
+        function findFictionalLocation() {
+            const input = document.getElementById('zipInput').value.trim();
+            const resultBox = document.getElementById('locationResult');
+            
+            if(!input) {
+                resultBox.innerText = "Please enter something into the locator device.";
+                return;
+            }
+
+            // List of joke locations
+            const locations = [
+                "📍 Store #001: The Center of the Bermuda Triangle (Drive-thru lane open, watch for temporal anomalies).",
+                "📍 Store #002: The Lost City of Atlantis (Soggy buns, but excellent seating).",
+                "📍 Store #042: Deep Space Sector 7 (Zero gravity fries available).",
+                "📍 Store #777: The Secret Sub-Basement of the Pentagon.",
+                "📍 Store #000: Directly behind you (Don't look, it will vanish)."
+            ];
+
+            // Select a random location from the array
+            const randomPick = locations[Math.floor(Math.random() * locations.length)];
+            resultBox.innerText = randomPick;
         }
-    </script>
-</body>
-</html>
+
+        // Progress Bar Logic
+        function startTracking() {
+            // FIXED: Changed getElementByld to getElementById
+            const bar = document.getElementById('trackBar');
+            const status = document.getElementById('trackerStatus');
+            bar.style.width = '0%';
+            status.innerText = "Contacting legal counsel...";
+
+            setTimeout(() => {
+                bar.style.width = '45%';
+                status.innerText = "Evading active trademark scans...";
+                
+                setTimeout(() => {
+                    bar.style.width = '100%';
+                    status.innerText = "Status: Safe. No real food detected on servers.";
+                    triggerAlert("Radar Target Locked", "Your digital schmeats are safely orbiting the moon to avoid copyright jurisdiction.");
+                }, 1200);
+            }, 800);
+        }
+
+
